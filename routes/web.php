@@ -12,6 +12,14 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+// UX/UI Tasks Routes (Public Access)
+Route::prefix('exercises')->name('exercises.')->group(function () {
+    Route::get('/landing', [App\Http\Controllers\TaskUIController::class, 'landing'])->name('landing');
+    Route::get('/form', [App\Http\Controllers\TaskUIController::class, 'form'])->name('form');
+    Route::get('/dashboard', [App\Http\Controllers\TaskUIController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [App\Http\Controllers\TaskUIController::class, 'profile'])->name('profile');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

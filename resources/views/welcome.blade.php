@@ -25,14 +25,6 @@
             <nav>
                 @if (Route::has('login'))
                 <div class="flex items-center space-x-6 text-lg">
-                    @auth
-                    <a href="{{ url('/dashboard') }}" class="font-semibold text-neutral-600 hover:text-primary-500 transition-colors duration-300">Dashboard</a>
-                    @else
-                    <a href="{{ route('login') }}" class="font-semibold text-neutral-600 hover:text-primary-500 transition-colors duration-300">Iniciar Sesión</a>
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-neutral-600 hover:text-primary-500 transition-colors duration-300">Registrate</a>
-                    @endif
-                    @endauth
                 </div>
                 @endif
             </nav>
